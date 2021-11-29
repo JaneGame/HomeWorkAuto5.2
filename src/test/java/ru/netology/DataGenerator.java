@@ -30,19 +30,17 @@ public class DataGenerator {
     private static void sendRequest(RegistrationDto user) {
         given() // "дано"
                 .spec(requestSpec) // указываем, какую спецификацию используем
-                .body(user); // передаём в теле объект, который будет преобразован в JSON
-        when()// "когда"
-                .post("/api/system/users");// на какой путь, относительно BaseUri отправляем запрос
-        then() // "тогда ожидаем"
-             .statusCode(200); // код 200 OK
+                .body(user) // передаём в теле объект, который будет преобразован в JSON
+                .when()// "когда"
+                .post("/api/system/users")// на какой путь, относительно BaseUri отправляем запрос
+                .then() // "тогда ожидаем"
+                .statusCode(200); // код 200 OK
     }
 
-    private static ResponseSpecification then() {
-        return null;
-    }
 
-    public static String getRandomLogin() {;
-        String login = faker.name().username();
+    public static String getRandomLogin() {
+        ;
+        String login = faker.name().firstName();
         return login;
     }
 
